@@ -22,18 +22,18 @@ def get_animal_cards(animals_list: [dict]):
         output += '<li class="cards__item">\n'
         if "name" in animal:
             output += f'<div class="card__title">{animal["name"]}</div>\n'
-        output += '<p class="card__text">'
+        output += '<p class="card__text"><ul>'
         if "scientific_name" in animal["taxonomy"]:
-            output += f"<strong>Scientific Name:</strong> {animal['taxonomy']['scientific_name']}<br/>\n"
+            output += f"<li><strong>Scientific Name:</strong> {animal['taxonomy']['scientific_name']}</li>\n"
         if "lifespan" in animal["characteristics"]:
-            output += f"<strong>Lifespan:</strong> {animal['characteristics']['lifespan']}<br/>\n"
+            output += f"<li><strong>Lifespan:</strong> {animal['characteristics']['lifespan']}</li>\n"
         if "diet" in animal["characteristics"]:
-            output += f"<strong>Diet:</strong> {animal['characteristics']['diet']}<br/>\n"
+            output += f"<li><strong>Diet:</strong> {animal['characteristics']['diet']}</li>\n"
         if "locations" in animal:
-            output += f"<strong>Location:</strong> {animal['locations'][0]}<br/>\n"
+            output += f"<li><strong>Location:</strong> {animal['locations'][0]}</li>\n"
         if "type" in animal["characteristics"]:
-            output += f"<strong>Type:</strong> {animal['characteristics']['type']}<br/>\n"
-        output += "</p>\n</li>\n"
+            output += f"<li><strong>Type:</strong> {animal['characteristics']['type']}</li>\n"
+        output += "</ul>\n</p>\n</li>\n"
     return output
 
 
