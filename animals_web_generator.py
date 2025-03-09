@@ -15,19 +15,20 @@ def get_html_template(file_path: str) -> str:
         return fd.read(-1)
 
 
-def get_animals_info(animals_list: [dict]):
+def get_animal_cards(animals_list: [dict]):
     """Briefly prints an animal-dictionary."""
     output: str = str()
     for animal in animals_list:
+        output += '<li class="cards__item">\n'
         if "name" in animal:
-            output += f"Name: {animal['name']}\n"
+            output += f"Name: {animal['name']}<br/>\n"
         if "diet" in animal["characteristics"]:
-            output += f"Diet: {animal['characteristics']['diet']}\n"
+            output += f"Diet: {animal['characteristics']['diet']}<br/>\n"
         if "locations" in animal:
-            output += f"Location: {animal['locations'][0]}\n"
+            output += f"Location: {animal['locations'][0]}<br/>\n"
         if "type" in animal["characteristics"]:
-            output += f"Type: {animal['characteristics']['type']}\n"
-        output += "\n"
+            output += f"Type: {animal['characteristics']['type']}<br/>\n"
+        output += "\n</li>"
     return output
 
 
@@ -35,7 +36,7 @@ def main():
     animals = load_data("animals_data.json")
 
     template = get_html_template("animals_template.html")
-    animals_info = get_animals_info(animals)
+    animals_info = get_animal_cards(animals)
 
     with open("animals.html", "w") as fd:
         fd.write(template.replace("__REPLACE_ANIMALS_INFO__", animals_info))
