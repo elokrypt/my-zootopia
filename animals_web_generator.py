@@ -23,6 +23,10 @@ def get_animal_cards(animals_list: [dict]):
         if "name" in animal:
             output += f'<div class="card__title">{animal["name"]}</div>\n'
         output += '<p class="card__text">'
+        if "scientific_name" in animal["taxonomy"]:
+            output += f"<strong>Scientific Name:</strong> {animal['taxonomy']['scientific_name']}<br/>\n"
+        if "lifespan" in animal["characteristics"]:
+            output += f"<strong>Lifespan:</strong> {animal['characteristics']['lifespan']}<br/>\n"
         if "diet" in animal["characteristics"]:
             output += f"<strong>Diet:</strong> {animal['characteristics']['diet']}<br/>\n"
         if "locations" in animal:
